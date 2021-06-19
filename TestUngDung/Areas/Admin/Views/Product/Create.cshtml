@@ -1,0 +1,80 @@
+﻿@model ModelEF.Model.Product
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@section header{
+    <i class="fa fa-save"></i>&nbsp;Thêm Mới Sản Phẩm
+}
+@using (Html.BeginForm("Create","Product",FormMethod.Post,new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="col-lg-12 form-group">
+            <div class="col-md-6">
+                @Html.ActionLink("Quay Lại", "Index", "Product", new { @class = "btn btn-primary" })
+            </div>
+        </div>
+        <div class="col-lg-12 form-group">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.NameProduct, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.NameProduct, new { @class = "form-control", @placeholder = "Mời nhập tên Sản Phẩm" })
+                    @Html.ValidationMessageFor(model => model.NameProduct, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.UnitCost, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.UnitCost, new { @class = "form-control", @placeholder = "Mời nhập tên đơn giá" })
+                    @Html.ValidationMessageFor(model => model.UnitCost, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Quantity, new { @class = "form-control", @placeholder = "Mời nhập số lượng" })
+                    @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                 @Html.CheckBoxFor(model => model.Status)
+                 @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="hinh" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CategoryNO, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.CategoryNO, null, "-- Chọn Danh mục --", new { @class = "form - control" })
+                    @Html.ValidationMessageFor(model => model.CategoryNO, "", new { @class ="text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.DescriptionProduct, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.DescriptionProduct, new { @class = "form-control", @placeholder = "Mời nhập mô tả" })
+                    @Html.ValidationMessageFor(model => model.DescriptionProduct, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Tạo" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

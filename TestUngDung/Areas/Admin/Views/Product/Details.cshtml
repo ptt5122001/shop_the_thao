@@ -1,0 +1,79 @@
+﻿@model ModelEF.Model.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    <i class="fa fa-user"></i>&nbsp;Chi Tiết Sản Phẩm
+}
+@using (Html.BeginForm())
+{
+    <div class="col-lg-12 form-group">
+        <div class="col-md-6">
+            @Html.ActionLink("Quay Lại", "Index", "Product", new { @class = "btn btn-primary" })
+        </div>
+    </div>
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-3">
+                <img style="width:230px;height:270px;border: 2px solid green" src="/Upload/image/@Html.DisplayFor(model => model.Image)" />
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">               
+                        @Html.LabelFor(model => model.NameProduct, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 ">
+                        <h5> @Html.DisplayFor(model => model.NameProduct) </h5>
+                    </div>
+                </div>
+                <div class="form-group">
+                        @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                   
+                    <div class="col-md-10 ">
+                        <h5> @Html.DisplayFor(model => model.Quantity) </h5>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    
+                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                
+                    <div class="col-md-6 ">
+                        <h5> @Html.DisplayFor(model => model.Status) </h5>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                 
+                        @Html.LabelFor(model => model.DescriptionProduct, htmlAttributes: new { @class = "control-label col-md-2" })
+            
+                    <div class="col-md-6 ">
+                        <h5> @Html.DisplayFor(model => model.DescriptionProduct) </h5>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                 
+                        @Html.LabelFor(model => model.CategoryNO, htmlAttributes: new { @class = "control-label col-md-2" })
+                
+                    <div class="col-md-6 ">
+                        <h5> @Html.DisplayFor(model => model.Category.NameCategory) </h5>
+                    </div>
+                </div>
+                <div class="form-group">
+           
+                        @Html.LabelFor(model => model.UnitCost, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                    <div class="col-md-6 ">
+
+                        <h5> @Html.DisplayFor(model => model.UnitCost) VNĐ</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
